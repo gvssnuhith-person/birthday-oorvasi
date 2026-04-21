@@ -4,51 +4,173 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Happy Birthday, Oorvasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
           :root {
-                  --gold: #f5c842; --rose: #e8608a; --deep: #0d0a1a; --mid: #1a1030;
-                  --light: #fdeaf5; --cream: #fff8f0; --star: #ffe066; --accent: #c084fc;
+                  --gold: #f5c842;
+                  --rose: #e8608a;
+                  --deep: #0d0a1a;
+                  --mid: #1a1030;
+                  --light: #fdeaf5;
+                  --cream: #fff8f0;
+                  --star: #ffe066;
+                  --accent: #c084fc;
           }
+
           *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
           html { scroll-behavior: smooth; }
+
           body {
-                  background: var(--deep); color: var(--light);
-                  font-family: 'Cormorant Garamond', serif; overflow-x: hidden; cursor: none;
+                  background: var(--deep);
+                  color: var(--light);
+                  font-family: 'Cormorant Garamond', serif;
+                  overflow-x: hidden;
+                  cursor: none;
           }
+
+          /* -- Custom Cursor -- */
           #cursor {
-                  position: fixed; width: 18px; height: 18px; border-radius: 50%; background: var(--rose);
-                  pointer-events: none; z-index: 9999; transform: translate(-50%,-50%);
-                  transition: transform .15s ease, background .3s; box-shadow: 0 0 16px 6px #e8608a55;
+                  position: fixed; width: 18px; height: 18px;
+                  border-radius: 50%; background: var(--rose);
+                  pointer-events: none; z-index: 9999;
+                  transform: translate(-50%,-50%);
+                  transition: transform .15s ease, background .3s;
+                  box-shadow: 0 0 16px 6px #e8608a55;
           }
-          #starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-          .petal { position: fixed; pointer-events: none; z-index: 1; font-size: 1.2rem; animation: floatUp linear infinite; opacity: 0; }
+
+          /* -- Canvas Stars -- */
+          #starfield {
+                  position: fixed; inset: 0; z-index: 0;
+                  pointer-events: none;
+          }
+
+          /* -- Anti-Gravity Floating Petals -- */
+          .petal {
+                  position: fixed;
+                  pointer-events: none;
+                  z-index: 1;
+                  font-size: 1.2rem;
+                  animation: floatUp linear infinite;
+                  opacity: 0;
+          }
           @keyframes floatUp {
-                  0% { transform: translateY(110vh) rotate(0deg) scale(.8); opacity: 0; }
-                  10% { opacity: .9; } 90% { opacity: .9; }
+                  0%   { transform: translateY(110vh) rotate(0deg) scale(.8); opacity: 0; }
+                  10%  { opacity: .9; }
+                  90%  { opacity: .9; }
                   100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
           }
-          section { position: relative; z-index: 2; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; }
-          #hero { background: radial-gradient(ellipse at 50% 60%, #2a0e3a 0%, #0d0a1a 70%); text-align: center; overflow: hidden; }
-          .hero-badge { font-family: 'Cormorant Garamond', serif; font-size: .9rem; letter-spacing: .4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeSlideDown .8s .3s ease forwards; }
-          .hero-name { font-family: 'Dancing Script', cursive; font-size: clamp(3.5rem, 12vw, 9rem); background: linear-gradient(135deg, #fde68a, #f5c842, #e8608a, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; letter-spacing: .02em; filter: drop-shadow(0 0 40px #e8608a66); opacity: 0; animation: heroName 1.2s .6s cubic-bezier(.22,1,.36,1) forwards; }
-          @keyframes heroName { from { opacity: 0; transform: scale(.7) translateY(40px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-          .hero-sub { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 3vw, 1.8rem); font-style: italic; color: var(--light); margin-top: 1.2rem; letter-spacing: .06em; opacity: 0; animation: fadeSlideDown .8s 1.1s ease forwards; }
-          .hero-scroll { margin-top: 3rem; font-size: .8rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); opacity: 0; animation: fadeSlideDown .8s 1.6s ease forwards; display: flex; flex-direction: column; align-items: center; gap: .5rem; }
-          .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--gold), transparent); animation: pulse 2s infinite; }
+
+          /* -- SECTIONS -- */
+          section {
+                  position: relative; z-index: 2;
+                  min-height: 100vh;
+                  display: flex; flex-direction: column;
+                  align-items: center; justify-content: center;
+                  padding: 4rem 2rem;
+          }
+
+          /* -- HERO -- */
+          #hero {
+                  background: radial-gradient(ellipse at 50% 60%, #2a0e3a 0%, #0d0a1a 70%);
+                  text-align: center; overflow: hidden;
+          }
+          .hero-badge {
+                  font-family: 'Cormorant Garamond', serif;
+                  font-size: .9rem; letter-spacing: .4em;
+                  color: var(--gold); text-transform: uppercase;
+                  margin-bottom: 1.5rem;
+                  opacity: 0; animation: fadeSlideDown .8s .3s ease forwards;
+          }
+          .hero-name {
+                  font-family: 'Dancing Script', cursive;
+                  font-size: clamp(3.5rem, 12vw, 9rem);
+                  background: linear-gradient(135deg, #fde68a, #f5c842, #e8608a, #c084fc);
+                  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+                  background-clip: text;
+                  line-height: 1; letter-spacing: .02em;
+                  filter: drop-shadow(0 0 40px #e8608a66);
+                  opacity: 0; animation: heroName 1.2s .6s cubic-bezier(.22,1,.36,1) forwards;
+          }
+          @keyframes heroName {
+                  from { opacity: 0; transform: scale(.7) translateY(40px); }
+                  to   { opacity: 1; transform: scale(1) translateY(0); }
+          }
+          .hero-sub {
+                  font-family: 'Playfair Display', serif;
+                  font-size: clamp(1.1rem, 3vw, 1.8rem);
+                  font-style: italic; color: var(--light);
+                  margin-top: 1.2rem; letter-spacing: .06em;
+                  opacity: 0; animation: fadeSlideDown .8s 1.1s ease forwards;
+          }
+          .hero-scroll {
+                  margin-top: 3rem; font-size: .8rem; letter-spacing: .3em;
+                  text-transform: uppercase; color: var(--gold);
+                  opacity: 0; animation: fadeSlideDown .8s 1.6s ease forwards;
+                  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+          }
+          .scroll-line {
+                  width: 1px; height: 60px;
+                  background: linear-gradient(to bottom, var(--gold), transparent);
+                  animation: pulse 2s infinite;
+          }
           @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
-          @keyframes fadeSlideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-          #star-portrait { background: linear-gradient(135deg, #0d0a1a 0%, #1a0530 100%); }
-          .portrait-container { display: flex; align-items: center; justify-content: center; gap: 4rem; max-width: 1100px; width: 100%; }
-          .portrait-frame { position: relative; width: 380px; height: 520px; border-radius: 24px; overflow: hidden; box-shadow: 0 0 80px rgba(192, 132, 252, 0.25); border: 1px solid rgba(255, 255, 255, 0.15); transform: rotate(-1.5deg); transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-          .portrait-frame:hover { transform: rotate(0deg) scale(1.03); box-shadow: 0 0 100px rgba(232, 96, 138, 0.4); border-color: rgba(232, 96, 138, 0.4); }
-          .star-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
-          .portrait-frame:hover .star-img { transform: scale(1.05); }
-          .frame-glimmer { position: absolute; inset: 0; background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%); pointer-events: none; z-index: 2; }
-          .portrait-text { max-width: 450px; opacity: 0; transform: translateX(30px); transition: all 0.8s ease 0.2s; }
-          .portrait-text.visible { opacity: 1; transform: translateX(0); }
-          .portrait-quote { font-size: clamp(1.2rem, 3vw, 1.8rem); font-style: italic; line-height: 1.6; color: var(--light); margin-top: 1.5rem; font-family: 'Playfair Display', serif; }
-          @media (max-width: 850px) { .portrait-container { flex-direction: column; text-align: center; gap: 3rem; } .portrait-frame { width: min(400px, 85vw); height: min(550px, 110vw); transform: rotate(0deg); } .portrait-text { transform: translateY(30px); } }
-          #antigravity { background: linear-gradient(160deg, #0f0520 0%, #1a0833 50%, #0d0a1a 100%); text-align: center; overflow: hidden; }
-      
-    </style></title>
-  </head>
+
+          @keyframes fadeSlideDown {
+                  from { opacity: 0; transform: translateY(-20px); }
+                  to   { opacity: 1; transform: translateY(0); }
+          }
+
+          /* -- STAR PORTRAIT -- */
+          #star-portrait {
+                  background: linear-gradient(135deg, #0d0a1a 0%, #1a0530 100%);
+          }
+          .portrait-container {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 4rem;
+                  max-width: 1100px;
+                  width: 100%;
+          }
+          .portrait-frame {
+                  position: relative;
+                  width: 380px;
+                  height: 520px;
+                  border-radius: 24px;
+                  overflow: hidden;
+                  box-shadow: 0 0 80px rgba(192, 132, 252, 0.25);
+                  border: 1px solid rgba(255, 255, 255, 0.15);
+                  transform: rotate(-1.5deg);
+                  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+          }
+          .portrait-frame:hover {
+                  transform: rotate(0deg) scale(1.03);
+                  box-shadow: 0 0 100px rgba(232, 96, 138, 0.4);
+                  border-color: rgba(232, 96, 138, 0.4);
+          }
+          .star-img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  transition: transform 0.8s ease;
+          }
+          .portrait-frame:hover .star-img {
+                  transform: scale(1.05);
+          }
+          .frame-glimmer {
+                  position: absolute;
+                  inset: 0;
+                  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+                  pointer-events: none;
+                  z-index: 2;
+          }
+          .portrait-text {
+                  max-width: 450px;
+                  opacity: 0;
+                  transform: translateX(30px);
+                  transition: all 0.8s ease 0.2s;
+          }
+          .portrait-text.visible {
+                  opacity: 1;
+                  transform: tran
